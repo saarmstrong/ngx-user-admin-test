@@ -7,20 +7,44 @@ import { RouterModule, Routes }     from '@angular/router';
 
 import { AlertModule,
          ModalModule,
-         TabsModule }          from 'ngx-bootstrap';
+         TabsModule }           from 'ngx-bootstrap';
 
-import { UserAdminModule }     from '@erdiko/ngx-user-admin';
+import { UserAdminModule }      from '@erdiko/ngx-user-admin';
 
-import { AppComponent } from './app.component';
+import { AppComponent }         from './app.component';
 
+// Extended components from ngx-user-admin package
+import { MyhomeComponent }      from './myhome/myhome.component';
+import { MyusereditComponent }  from './myuseredit/myuseredit.component';
+
+/**
+  Custom routing to make sure we use our extended components    
+ */
 
 // clang-format off
-const routes: Routes = [];
+const routes: Routes = [
+     {
+         path: 'user',
+         component: MyusereditComponent
+     },
+     {
+         path: '',
+         component: MyhomeComponent
+     },
+     {
+         path: '**',
+         redirectTo: ''
+     }
+];
 // clang-format on
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    // Declare our custom components
+    MyhomeComponent,
+    MyusereditComponent
   ],
   imports: [
     BrowserModule,
@@ -32,10 +56,8 @@ const routes: Routes = [];
     ModalModule.forRoot(),
     TabsModule.forRoot(),
 
+    // Import our custom routes
     RouterModule.forRoot(routes),
-
-    UserAdminModule.forRoot()
-
   ],
   providers: [],
   bootstrap: [AppComponent]
