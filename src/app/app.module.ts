@@ -9,7 +9,10 @@ import { AlertModule,
          ModalModule,
          TabsModule }           from 'ngx-bootstrap';
 
-import { UserAdminModule }      from '@erdiko/ngx-user-admin';
+ import { UserAdminModule }      from '@erdiko/ngx-user-admin';
+
+import { UsersService }         from '@erdiko/ngx-user-admin';
+import { MessageService }       from '@erdiko/ngx-user-admin';
 
 import { AppComponent }         from './app.component';
 
@@ -59,7 +62,9 @@ const routes: Routes = [
     // Import our custom routes
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
